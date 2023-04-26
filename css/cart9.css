@@ -1,0 +1,278 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+	background-image: url('../images/menu7.jpg');
+    background-size: 100% 100%;
+}
+.navbar{
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	background-color: #b33c00;
+	position: fixed;
+	top: 0; right:0; left:0;
+	border-radius: 0px 0px 50px 50px;
+}
+nav{
+	flex: 1;
+	text-align: right;
+}
+nav ul{
+	display: inline-block;
+	list-style-type: none;
+}
+nav ul li{
+	display: inline-block;
+	margin-right: 5px;
+}
+li a{
+	padding-left: 750px;
+}
+nav ul li a{
+	padding: 7px 14px;
+	text-decoration: none;
+	color: #fff;
+	font-weight: bold;
+	display: inline-block;
+	transition: .2s;
+}
+nav ul li a:hover{
+	background-color: #fff;
+	color: #cc0000;
+	border-radius: 1.5rem;
+	padding: 15px;
+}
+a{
+	text-decoration: none;
+	color: #fff;
+}
+p{
+	color: #fff;
+}
+strong{
+	color: red;
+}
+.logo a img {
+	width: 90px; 
+	height: 90px;
+	border-radius: 5rem;
+    border: 2px solid white;
+}
+.cafe_name{
+	margin-left: 10px;
+	color: white;
+	font-size: 25px;
+}
+.cafe_name h5 {
+	color: yellow;
+	font-size: 18px;
+}
+.shopcart {
+	padding-left: 420px;
+}
+.container{
+	max-width: 1300px;
+	margin: auto;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+.row{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.header{
+	background-color: rgba(0, 0, 0,0.8);
+}
+/*.header .row{
+	margin-top: 70px;
+}*/
+
+.small-container{
+	max-width: 1080px;
+	margin: auto;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.btn{
+	display: inline-block;
+	background: #00e600;
+	color: black;
+	padding: 8px 30px;
+	margin: 30px 0;
+	border-radius: 30px;
+	transition: background 0.5s;
+}
+
+.btn:hover{
+	background: #0bf33d;
+}
+.btn.disabled,.btn:disabled{
+	opacity:.65
+}
+.btn:not(:disabled):not(.disabled){
+	cursor:pointer
+}
+a.btn.disabled,fieldset:disabled a.btn{
+	pointer-events:none
+}
+
+
+
+.menu-icon{
+	width: 28px;
+	margin-left: 20px;
+	display: none;
+}
+
+/*------media query for menu------*/
+
+@media only screen and (max-width: 800px){
+	li a{
+		padding-left: 150px;
+	}
+	nav ul{
+		position: absolute;
+		top: 70px;
+		left: 0;
+		background: #333;
+		width: 100%;
+		overflow: hidden;
+		transition: max-height 0.5s;
+	} 
+	nav ul li{
+		display: block;
+		margin-right: 50px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	nav ul li a{
+		color: #fff;
+	}
+	.menu-icon{
+		display: block;
+		cursor: pointer;
+		padding: 4px;
+		border-radius: 3rem;
+	}
+    .navbar{
+        border-radius: 0px 0px 0px 0px;
+    }
+}
+
+
+/*------cart items------*/
+
+.cart-page{
+	margin: 80px auto;
+	background-color: #4d4d4d;
+	padding: 10px;
+	margin-top: 170px;
+}
+table{
+	width: 100%;
+	border-collapse: collapse;
+}
+.cart-info{
+	display: flex;
+	flex-wrap: wrap;
+}
+th{
+	text-align: left;
+	padding: 5px;
+	color: black;
+	background: #fff;
+	font-weight: normal;
+}
+td{
+	padding: 10px 5px;
+	color: #fff;
+}
+td input{
+	width: 40px;
+	height: 30px;
+	padding: 5px;
+	background-color: rgba(0, 0, 0,0.5);
+	color: #fff;
+	border: 0;
+}
+td a{
+	color: white;
+	font-size: 12px;
+}
+td img{
+	width: 80px;
+	height: 80px;
+	margin-right: 10px;
+    border-radius: 1rem;
+    border: 2px solid #fff;
+}
+.total-price{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.total-price table{
+	border-top: 3px solid white;
+	width: 100%;
+	max-width: 420px;
+	color: #fff;
+}
+td:last-child{
+	text-align: right;
+}
+th:last-child{
+	text-align: right;
+}
+small{
+	color: #fff;
+}
+/*------media query for less than 600 screen size------*/
+@media only screen and (max-width: 600px){
+    body{
+        background-size: contain;
+    }
+	.row{
+		text-align: center;
+	}
+	.col-2, .col-3, .col-4{
+		flex-basis: 100%;
+	}
+	.single-product .row{
+		text-align: left;
+	}
+	.single-product .col-2{
+		padding: 20px 0;
+	}
+	.single-product h1{
+		font-size: 26px;
+		line-height: 32px;
+	}
+	.cart-info p{
+		display: none;
+	}
+	.logo a img {
+		width: 40px; 
+		height: 40px;
+        border: 1.5px solid white;
+		/* margin-left: 5px; */
+	}
+	.shopcart {
+		padding-left: 50px;
+	}
+	.cafe_name{
+		/* margin-left: 5px; */
+		font-size: 12px;
+	}
+	.cafe_name h5 {
+		font-size: 10px;
+	}
+}
+
