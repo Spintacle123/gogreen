@@ -1,0 +1,62 @@
+.navbar{
+	display: flex;
+	align-items: center;
+	background-color: brown;
+	position: fixed;
+	top: 0;right:0; left:0;
+	border-radius: 0px 0px 50px 50px;
+}
+nav{
+	flex: 1;
+	text-align: right;
+}
+nav ul{
+	display: inline-block;
+	list-style-type: none;
+}
+nav ul li{
+	display: inline-block;
+	margin-right: 5px;
+}
+li a{
+	padding-left: 750px;
+}
+nav ul li a{
+	padding: 7px 14px;
+	text-decoration: none;
+	color: #fff;
+	font-weight: bold;
+	display: inline-block;
+	transition: .2s;
+}
+nav ul li a:hover{
+	background-color: #ff4000;
+	color: #fff;
+	border-radius: 1.5rem;
+	padding: 15px;
+}
+a{
+	text-decoration: none;
+	color: #fff;
+}
+p{
+	color: #fff;
+}
+
+.logo a img {
+	width: 90px; 
+	height: 90px;
+	border-radius: 5rem;
+}
+.cafe_name{
+	margin-left: 10px;
+	color: white;
+	font-size: 25px;
+}
+.cafe_name span p {
+	color: yellow;
+	font-size: 18px;
+}
+.shopcart {
+	padding-left: 405px;
+}
