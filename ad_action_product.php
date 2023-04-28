@@ -14,6 +14,7 @@
 	$code="";
 	$ccode="";
 
+	// add products
 	if(isset($_POST['add'])){
 		$image=$_FILES['images']['name'];
 		$validImageExtension = ['jpg', 'jpeg', 'png'];
@@ -58,6 +59,7 @@
 		}
 	}
 
+	//edit products
 	if(isset($_GET['edit'])){
 		$id=$_GET['edit'];
 
@@ -79,6 +81,7 @@
 		$update=true;
 	}
 
+	//update products
 	if(isset($_POST['update'])){
 
 		$image=$_FILES['images']['name'];
@@ -123,6 +126,7 @@
 		// }
 	}
 
+	//get details
 	if(isset($_GET['details'])){
 		$id=$_GET['details'];
 		$query="SELECT * FROM products WHERE id=?";
@@ -140,6 +144,30 @@
 		$ccode=$row['code'];
 		$cprod_qntty=$row['prod_qntty'];
 		$cimage=$row['image'];
+	}
+
+	//delete deatails
+	if(isset($_GET['delete'])){
+		$id=$_GET['delete'];
+
+		$sql="SELECT image FROM products WHERE id=?";
+		$stmt2=$conn->prepare($sql);
+		$stmt2->bind_param("i",$id);
+		$stmt2->execute();
+		$result2=$stmt2->get_result();
+		$row=$result2->fetch_assoc();
+
+		$imagepath=$row['image'];
+		unlink($imagepath);
+
+		$query="DELETE FROM products WHERE id=?";
+		$stmt=$conn->prepare($query);
+		$stmt->bind_param("i",$id);
+		$stmt->execute();
+
+		header('location:ad_addproducts.php');
+		$_SESSION['response']="Successfully Deleted!";
+		$_SESSION['res_type']="danger";
 	}
 
 	// if(isset($_GET['details2'])){

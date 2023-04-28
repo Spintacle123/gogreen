@@ -40,6 +40,7 @@
 							<td width="5%">Amount Paid</td>
 							<td width="5%">Action</td>
 							<td width="5%">Status</td>
+							<td width="5%">Review</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -82,6 +83,10 @@
 									}
 								?>
 							</td>
+							<td style="text-align: center;">
+									<a href="review.php?details=<?= $row['id']; ?>" class="btn btn-sm" style="background-color:yellow; padding: 3px; border-radius: 2rem; color: black">Reviews</a>
+								
+							</td>
 						</tr>
 						<?php } ?>
 					<?php } ?>
@@ -89,7 +94,7 @@
 					<tfoot style="background-color: #fff; color: black; text-align:center">
 						
 							<tr>
-								<td colspan="6">Total transactions: 
+								<td colspan="7">Total transactions: 
 								<?php if (!empty($_SESSION['ID'])) { ?>
 									<?php echo $ctr; ?>
 									<?php } ?>
