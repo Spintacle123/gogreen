@@ -1,13 +1,16 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap'); */
+
 *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 body{
 	/* background-image: url('../images/gogreen.jpg'); */
     background-size: 100% 100%;
+	background-color: #f1f1f1;
 }
 .navbar{
 	display: flex;
@@ -57,12 +60,8 @@ p{
 strong{
 	color: red;
 }
-.logo a img {
-	width: 90px; 
-	height: 90px;
-	border-radius: 5rem;
-    border: 2px solid white;
-}
+
+
 .cafe_name{
 	margin-left: 10px;
 	color: white;
@@ -135,7 +134,7 @@ strong{
 }
 
 .header{
-	background-image: url('../images/g4.jpg');
+	background-image: url('../images/main-ad.jpg');
 	background-size: 100% 100%;
 }
 /*.header .row{
@@ -303,7 +302,7 @@ small{
         background-size: contain;
     }
     .header{
-        background-image: url('../images/g4.2.jpg');
+        background-image: url('../images/main-ad.jpg');
         background-size: 100% 100%;
     }
 	.row{
@@ -364,12 +363,7 @@ small{
 	.col-4 img{
 		width: 50%;
 	}
-	.logo a img {
-		width: 40px; 
-		height: 40px;
-        border: 1.5px solid white;
-		/* margin-left: 5px; */
-	}
+
 	.shopcart {
 		padding-left: 50px;
 	}

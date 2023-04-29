@@ -53,7 +53,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
         <a href="ad_index.php" class="logo d-flex align-items-center">
-            <img src="images/gg.png" alt="">
+            <!-- <img src="images/gg.png" alt=""> -->
             <h5 style="color:#fff">Go Green & Hire </h5>
         </a>
       <i class="bi bi-list toggle-sidebar-btn" style="color:#fff"></i>
