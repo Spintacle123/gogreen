@@ -113,6 +113,7 @@
                                   <td> 
                                     <a href="ad_view_products.php?details=<?= $row['id']; ?>" type="button" class="btn btn-info" ><i class="bi bi-eye"></i></a>
                                     <a href="ad_edit_products.php?edit=<?= $row['id']; ?>" type="button" class="btn btn-success"><i class="bx bxs-edit"></i></a>
+                                    <a href="ad_action_product.php?delete=<?= $row['id']; ?>" type="button" class="btn btn-danger" onclick="return confirm('Do you want delete this record?');"><i class="bx bxs-trash"></i></a>
                                   </td>
                                 </tr>
                             <?php } ?>
