@@ -65,7 +65,7 @@
 						<?php } ?>
 						<img class="" src="<?= $row['image'] ?>">
 						<p><?= $row['name'] ?></p>
-						<span><strong>$ </strong> <?= $row['price'] ?></span>
+						<span><strong>$ </strong> <?= $row['price'] ?> <span class="color: #c6c6c6; font-size: 11px">/day</span> </span>
 
 						<div class="ratings">
 							<span>Rating</span>
@@ -112,7 +112,7 @@
 							<?php } ?>
 							<img class="" src="<?= $row['image'] ?>">
 							<p><?= $row['name'] ?></p>
-							<span><strong>$ </strong> <?= $row['price'] ?></span>
+							<span><strong>$ </strong> <?= $row['price'] ?> <span class="color: #c6c6c6; font-size: 11px">/day</span></span>
 
 							<div class="ratings">
 								<span>Rating</span>
@@ -304,12 +304,19 @@ body{
 }
 
 .card {
+	transition: all 0.6s ease-in-out 0s;
 	display: flex;
 	justify-content: center;
 	background-color: #fff;
 	border-radius: 10px;
 	padding: 20px 30px 10px 30px;
 	border: 1px solid #f1f1f1;
+}
+
+.card:hover {
+	transition: all;
+	border: 2px solid  #5bb343;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .category {

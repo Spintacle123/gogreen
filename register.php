@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
   <link rel="stylesheet" href="css/reglog7.css">
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600;1,700&family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -20,24 +21,17 @@
 </head>
 <body>
   <div class="header">
-		<div class="container">
-			<div class="navbar">
-				<div class="logo">
-					<a href="home.php"><img src="images/gg.png"></a>
-				</div>
-				<div class="cafe_name">
-				  <a href="home.php"><p>Go Green & Hire System </p></a>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+      <div class="navbar">
+      <div class="logos">
+            <a href="home.php"><img src="./assets/img/logo.png"></a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <form method="post" action="register.php" id="register_form">
   	<h1>Register</h1>
-    <div>
-        <input type="checkbox" name="conditions" required>
-        <h6 style="text-align: center"><a href="dataprivacy.php">Accept Terms & Conditions</a></h6>
-    </div><br>
     <div>
       <input type="text" name="name" placeholder="Enter your Full Name" value="<?php echo $name; ?>" required>
     </div>
@@ -69,6 +63,10 @@
       <input type="text" name="address" placeholder="Enter your Address" value="<?php echo $address; ?>" required>
     </div>
     
+    <div class="terms">
+        <input type="checkbox" name="conditions" required>
+        <h6 style="text-align: center"><a href="dataprivacy.php">Accept Terms & Conditions</a></h6>
+    </div><br>
   	<div>
   		<button type="submit" name="register" id="reg_btn">Register</button>
   	</div>
@@ -90,3 +88,31 @@
 
 </body>
 </html>
+<style>
+   *{
+		font-family: 'Josefin Sans', sans-serif !important;
+	}
+  .header > div > .navbar {
+    background-color: #5bb343;
+    border-radius: 0px;
+    padding-left: 8rem;
+      padding-right: 8rem;
+      z-index: 9999;
+  }
+  .logos > a > img {
+      width: 200px;
+      height: auto;
+   }
+
+   .terms {
+    margin-top: 50px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+   }
+
+   .terms > input {
+    width: max-content !important;
+    margin-right: 10px !important;
+   }
+</style>

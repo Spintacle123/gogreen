@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="css/prod17.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- addtocart -->
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600;1,700&family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -40,7 +41,7 @@
 		</div>
 
 		<div class="sort">
-			<div class="row">
+			<div class="items">
 				<?php
 
 		  			if(isset($_GET['page'])){
@@ -57,14 +58,30 @@
 		  			$result = $item->get_result();
 		  			while ($row = $result->fetch_assoc()):
 	  				?>
-				<div class="col-4">
-					<a href="product-details.php?product-details=<?= $row['id']; ?>">
-					<img src="<?= $row['image'] ?>">
-					<h4><?= $row['name'] ?></h4>
-					<p>£ <?= number_format($row['price'],2) ?></p>
-				</a>
-				</div>
+					<div class="card animate__animated animate__bounceInUp animate__delay-2s">
+						<a href="product-details.php?product-details=<?= $row['id']; ?>">
+							<?php if ($row['purchased'] == 0 ) { ?>
+								<span class="label-new">New</span>
+							<?php } ?>
+							<img class="" src="<?= $row['image'] ?>">
+							<p><?= $row['name'] ?></p>
+							<span><strong>$ </strong> <?= $row['price'] ?> <span class="color: #c6c6c6; font-size: 11px">/day</span></span>
+
+							<div class="ratings">
+								<span>Rating</span>
+								<div class="flex">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+								</div>
+							</div>
+						</a>
+					</div>
 					<?php endwhile; ?>
+
+				</div>
 			</div>
 		</div>
 		<br><br>
@@ -156,4 +173,110 @@
 
 </body>
 </html>
+<style>
+
+* {
+	font-family: 'Josefin Sans', sans-serif !important;
+}
+
+.items {
+	display: flex;
+	gap: 10px;
+	margin-top: 40px;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+
+.items > div:nth-child(1) > div {
+	display: flex;
+	justify-content:center;
+	align-items: center;
+}
+
+.items > div {
+	width: calc(100% / 5);
+}
+
+.garden-items {
+	display: flex;
+	gap: 30px;
+}
+
+.items p{
+	color: #a6a6a6 !important;
+	font-size: 1.3rem;
+}
+
+.card > a > h4 {
+	color: #000;
+}
+
+.card > a > span {
+	font-size: 1.4rem;
+	margin-top: 25px;
+}
+
+
+.card > a > p {
+	font-size: 1rem;
+	margin-top: 25px;
+}
+
+.card > a > img {
+	max-width: 150px;
+	height: 150px;
+	align-self: center;
+}
+
+.card {
+	transition: all 0.6s ease-in-out 0s;
+	display: flex;
+	justify-content: center;
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 20px 30px 10px 30px;
+	border: 1px solid #f1f1f1;
+}
+
+.card:hover {
+	transition: all;
+	border: 2px solid  #5bb343;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.category {
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+}
+
+.category > a {
+	 font-size: 1.3em;
+	 color: #009688;
+}
+
+.category > div > h3{
+	font-weight: bold;
+	color: #5bb343;
+}
+
+.category > div > p{
+	color: #998e8e;
+}
+
+.label-new {
+	background-color: #5bb343;
+	padding: 5px 15px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 0.9em !important;
+}
+
+.ratings {
+	padding-top: 7px;
+	border-top: 1px solid #f1f1f1;
+	margin-top: 20px;
+}
+</style>
 

@@ -5,21 +5,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="css/reglog7.css">
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600;1,700&family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-    <div class="header">
-		<div class="container">
-			<div class="navbar">
-				<div class="logo">
-					<a href="home.php"><img src="images/gg.png"></a>
-				</div>
-				<div class="cafe_name">
-				    <a href="home.php"><p>Go Green & Hire System </p></a>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="header">
+    <div class="container">
+      <div class="navbar">
+      <div class="logos">
+            <a href="home.php"><img src="./assets/img/logo.png"></a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <form method="post" action="login.php" id="register_form">
     <?php if (isset($_SESSION['response'])) { ?>
@@ -28,6 +27,7 @@
             </div>
           <?php } unset($_SESSION['response']); ?>
   	<h1>Login</h1><br>
+    <p style="margin-bottom: 30px;color: #c6c6c6">Welcome to Go Green! Your one-stop-shop for top-quality tools for rent. Login now and explore our extensive collection to elevate your project to the next level!</p>
     </div>
     <div>
       <input type="text" name="username" placeholder="Enter your Username" value="<?php echo $username; ?>" required>
@@ -47,3 +47,20 @@
     <h5 style="text-align: center"><a href="register.php">Don't have an account?</a></h5>
   </form>
 </html>
+
+<style>
+    *{
+		font-family: 'Josefin Sans', sans-serif !important;
+	}
+  .header > div > .navbar {
+    background-color: #5bb343;
+    border-radius: 0px;
+    padding-left: 8rem;
+      padding-right: 8rem;
+      z-index: 9999;
+  }
+  .logos > a > img {
+      width: 200px;
+      height: auto;
+   }
+</style>

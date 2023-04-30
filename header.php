@@ -131,6 +131,7 @@
       border-radius: 0px;
       padding-left: 8rem;
       padding-right: 8rem;
+      z-index: 9999;
    }
 
    .cart {

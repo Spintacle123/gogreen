@@ -34,20 +34,21 @@ body {
     text-decoration: none;
 }
 #register_form {
-    width: 25%;
+    width: 30%;
     margin: 100px auto;
     margin-top: 180px;
-    padding-bottom: 30px;
-    border: 1px solid #918274;
+    padding: 40px;
+    padding-bottom: 50px;
+    text-align: center;
+    border: 1px solid #cacaca;
     border-radius: 5px;
     background: white;
 }
 #register_form input {
     width: 80%;
-    height: 30px;
     margin: 5px 10%;
     font-size: 1.1em;
-    padding: 4px;
+    padding: 10px;
     font-size: .9em;
 }
 .form_error span {
@@ -61,11 +62,12 @@ body {
     border: 1px solid #D83D5A;
 }
 #reg_btn {
-    height: 35px;
+    margin-top: 20px;
     width: 80%;
+    padding: 15px 10px;
     margin: 5px 10%;
     color: white;
-    background: #3B5998;
+    background: #5bb343;
     border: none;
     border-radius: 5px;
 }

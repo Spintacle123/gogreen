@@ -15,8 +15,10 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
-
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600;1,700&family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<script type="text/javascript">
 		function sizesselect() {
 			var s=document.getElementById("sizeselect");
@@ -26,13 +28,75 @@
 	</script>
 </head>
 <body>
+	
 
 	<div class="header">
 		<?php include("header.php") ?>
 	</div>
 
+
+	<div class="container">
+		<div class="product-details">
+			<div class="p-img">
+				<img src="<?= $dimage; ?>" alt="">
+			</div>
+			<div class="p-details">
+				<h2><?= $dname; ?></h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+
+				<div class="ratings" style="border-bottom: 1px solid #c6c6c6;margin-bottom:2em">
+					<span>Rating</span>
+					<div class="flex">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+					</div>
+				</div>
+
+				<h2>$ <span id="price"> <?= number_format($dprice,2); ?></span> <span style="font-weight: 400; color: #c6c6c6; font-size: 1.5rem">/day</span></h2>
+
+
+				<span class="want-to mb-2 mt-2">Want to Rent?</span>
+				<div class="d-flex gap-lg-3 mb-4" style="gap:30px">
+					<div class="d-flex flex-column" style="width:calc(100% / 6)">
+						<span class="days">No. of days</span>
+						<input type="number" id="noOfDays">
+					</div>
+					<div class="d-flex flex-column">
+						<span class="days">Starting Date</span>
+						<input type="text" id="datepicker" data-datepicker>
+					</div>
+					<div class="d-flex flex-column">
+						<span class="days">Date End</span>
+						<p style="color: #b0aeae" id="dateTo">yyyy/mm/dd</p>
+					</div>
+				</div>
+				<?php if (empty($_SESSION['ID'])) { ?>
+					<a href="login.php" class="btn addItemBtn"><span id="total"></span> 
+						<span class="totals"></span>
+						Book Tools 
+					</a>
+				<?php }else{ ?>
+					<button class="btn addItemBtn" style="padding-top: 10px; padding-bottom: 10px" >
+						<span class="totals"></span>
+						Book Tools
+					</button>
+				<?php } ?>
+			</div>
+		</div>	
+	</div>
+
+
+
+
+	<br>
+	<br>
+
+
 <!------- single product details ------->
-	<div class="small-container single-product">
+	<!-- <div class="small-container single-product">
 		<div class="row">
 			<div class="col-2 info1">
 				<div class="message" id="message"></div>
@@ -40,9 +104,12 @@
 				<img src="<?= $dimage; ?>" id="ProductImg">
 			</div>
 			
+			
 			<div class="col-2 info2">		
 				<h2><?= $dname; ?></h2>
 				<h4>Php: <?= number_format($dprice,2); ?></h4>
+				<label for="date">Select a date:</label>
+				<input type="date" id="date" value="<%= new Date().toISOString().substr(0,10) %>">
 
 				<div class="col-sm-10 text-center">
                                     <h1 class="text-warning mt-4 mb-4">
@@ -122,7 +189,7 @@
 				</form>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 <!------- Reviews ------->
 
@@ -130,33 +197,45 @@
 
 
 <!------- More products ------->
-
-	<div class="small-container1">
-		<div class="row row-2">
-			<h2><b>More Products</b></h2>
-			<a href="products.php"><b class="btn">View More</b></a>
-		</div>
-		<div class="row">
-			<?php
-	  			$item = $conn->prepare('SELECT * FROM products order by rand() limit 4');
-	  			$item->execute();
-	  			$result = $item->get_result();
-	  			while ($row = $result->fetch_assoc()):
-  			?>
-			<div class="col-4">
-				<a href="product-details.php?product-details=<?= $row['id']; ?>">
-				<img src="<?= $row['image'] ?>">
-				<h4><?= $row['name'] ?></h4>
-				<p><strong>Php:</strong> <?= $row['price'] ?></p>
-			</a>
+<div class="container" style="margin-bottom: 10rem; background-color:#f1f1f1; padding: 20px; border-radius: 10px">
+		<div class="category">
+			<div>
+				<h3>MORE TOOLS</h3>
 			</div>
-			<?php endwhile; ?>
-		</div>	
-	</div>
+		</div>
+		<div class="items">
+				<?php
+						$i = 1;
+						include 'config.php';
+						$item = $conn->prepare('SELECT * FROM products WHERE class = "Carpentry Tools" order by ID DESC limit 5');
+						$item->execute();
+						$result = $item->get_result();
+						while ($row = $result->fetch_assoc()): $i++
+					?>
+					<div class="card animate__animated animate__bounceInUp animate__delay-2s">
+						<a href="product-details.php?product-details=<?= $row['id']; ?>">
+							<?php if ($row['purchased'] == 0 ) { ?>
+								<span class="label-new">New</span>
+							<?php } ?>
+							<img class="" src="<?= $row['image'] ?>">
+							<p><?= $row['name'] ?></p>
+							<span><strong>$ </strong> <?= $row['price'] ?></span>
 
-	<br>
-		<a href="#top" style="background: #cc0000; color: #fff; padding: 10px; margin-left: 50px; text-decoration: none; border-radius: 2rem;">Back to top</a>
-	<br><br>
+							<div class="ratings">
+								<span>Rating</span>
+								<div class="flex">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#bdcd23" d="m12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72l3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41l-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18l-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z"/></svg>
+								</div>
+							</div>
+						</a>
+					</div>
+				<?php endwhile; ?>
+			</div>
+	</div>
 
 
 <!------- footer ------->
@@ -243,6 +322,83 @@
 <script>
 	$(document).ready(function() {
 		load_rating_data();
+
+
+		var datepicker = document.getElementById('datepicker');
+		var picker = flatpickr(datepicker, {
+			dateFormat: 'Y-m-d',
+			locale: 'en',
+			disable: [
+				{
+					from: '2023-04-10',
+					to: '2023-04-12'
+				}
+			],
+			onChange: function(selectedDates, dateStr, instance) {
+				const noOfDays = $('#noOfDays').val();
+				const price = $('#price').text();
+				const dateFrom = dateStr;
+
+				$('#dateTo').text(analyzeDate(noOfDays, dateFrom ));
+				$('#totals').text(computeTotal(noOfDays, price ));
+				
+				console.log(selectedDates[0]); // logs the selected date object
+				console.log(dateStr); // logs the selected date string in the format 'YYYY-MM-DD'
+			}
+		});
+
+		
+
+
+		function computeTotal (days, price){
+			return parseInt(days) * parseInt(price);
+		}
+
+		function disableDate () {
+				var datePicker = document.getElementById("date");
+
+				// Disable dates from April 10 to April 12, 2023
+				var minDate = new Date("2023-04-01");
+				var maxDate = new Date("2023-04-30");
+				var disabledDates = ["2023-04-10", "2023-04-11", "2023-04-12"];
+
+				datePicker.setAttribute("min", formatDate(minDate));
+				datePicker.setAttribute("max", formatDate(maxDate));
+
+				datePicker.addEventListener("input", function() {
+					var selectedDate = new Date(this.value);
+					
+					if (disabledDates.includes(formatDate(selectedDate))) {
+						this.setCustomValidity("This date is not allowed.");
+					} else {
+						this.setCustomValidity("");
+					}
+				});
+
+				function formatDate(date) {
+				var year = date.getFullYear();
+				var month = String(date.getMonth() + 1).padStart(2, "0");
+				var day = String(date.getDate()).padStart(2, "0");
+				
+				return year + "-" + month + "-" + day;
+			}
+		}
+
+
+		function analyzeDate(days, dateFrom) {
+
+			// Parse the input date string into a Date object
+			const date = new Date(dateFrom);
+			
+			// Calculate the new date by subtracting the specified number of days
+			const newDate = new Date(date.getTime() + (days  * 24 * 60 * 60 * 1000));
+
+			// Format the new date as a string in YYYY-MM-DD format
+			const formattedDate = newDate.toISOString().slice(0, 10);
+
+			// Return the formatted date string
+			return formattedDate
+		}
 
 		function load_rating_data() {
 
@@ -337,3 +493,173 @@ $('#review_content').html(html);
 }
 });
 </script>
+
+<style>
+
+	*{
+		font-family: 'Josefin Sans', sans-serif !important;
+		color: #000;
+	}
+
+	a{
+		 text-decoration: none;
+	}
+
+	.container {
+		max-width: 1300px;
+	}
+	.container > .product-details {
+		display: flex;
+		width: 100%;
+		margin-top: 9rem;
+	}
+	.container > .product-details > .p-img  {
+		width: calc(100%/2);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.container > .product-details > .p-img > img {
+		width: 80%;
+	}
+	.container > .product-details > .p-details > p {
+		color: #b0aeae;
+	}
+	.container > .product-details > .p-details {
+		width: calc(100% / 2);
+		display: flex;
+		flex-direction: column;
+		background-color: #f1f1f1;
+		border-left: 5px solid #5bb343;
+		padding: 2rem;
+	}
+	
+	.container > .product-details > .p-details > h2 {
+		font-weight: bold;
+	}
+
+	.want-to {
+		font-weight: bold;
+	}
+
+	.days {
+		color: #5bb343; 
+	}
+
+	input {
+		display: flex;
+		align-items: center;
+		padding-left: 10px;
+	}
+
+	.category {
+		display: flex;
+		justify-content: space-between;
+		align-items: end;
+	}
+
+	.category > a {
+		font-size: 1.3em;
+		color: #009688;
+	}
+
+	.category > div > h3{
+		font-weight: bold;
+		color: #5bb343;
+	}
+
+	.category > div > p{
+		color: #998e8e;
+	}
+
+
+	.items {
+		display: flex;
+		gap: 20px;
+	}
+
+	.addItemBtn {
+		padding: 10px !important;
+		font-size: 19px;
+		text-transform: uppercase;
+		color: white;
+	}
+
+.items {
+	display: flex;
+	gap: 20px;
+}
+
+.items > div:nth-child(1) > div {
+	display: flex;
+	justify-content:center;
+	align-items: center;
+}
+
+.items > div {
+	width: calc(100% / 5);
+}
+
+.garden-items {
+	display: flex;
+	gap: 30px;
+}
+
+.items p{
+	color: #a6a6a6 !important;
+	font-size: 1.3rem;
+}
+
+.card > a > h4 {
+	color: #000;
+}
+
+.card > a > span {
+	font-size: 1.4rem;
+	margin-top: 25px;
+}
+
+
+.card > a > p {
+	font-size: 1rem;
+	margin-top: 25px;
+}
+
+.card > a > img {
+	max-width: 150px;
+	height: 150px;
+	align-self: center;
+}
+
+.card {
+	transition: all 0.6s ease-in-out 0s;
+	display: flex;
+	justify-content: center;
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 20px 30px 10px 30px;
+	border: 1px solid #f1f1f1;
+}
+
+.card:hover {
+	transition: all;
+	border: 2px solid  #5bb343;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.label-new {
+	background-color: #5bb343;
+	padding: 5px 15px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 0.9em !important;
+}
+
+.ratings {
+	padding-top: 7px;
+	border-top: 1px solid #f1f1f1;
+	margin-top: 20px;
+}
+
+
+</style>
