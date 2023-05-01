@@ -142,7 +142,7 @@
 		</div>
 	</div>
 
-	<div style="bottom: 0;position: absolute; width: 100%;">
+	<div>
 		<!------- footer ------->
 		<?php include("footer.php") ?>	
 	</div>

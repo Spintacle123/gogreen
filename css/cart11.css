@@ -5,7 +5,8 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 body{
-	background-image: url('../images/menu7.jpg');
+	/* background-image: url('../images/menu7.jpg'); */
+	background-color: #f1f1f1;
     background-size: 100% 100%;
 }
 .navbar{
@@ -172,8 +173,9 @@ a.btn.disabled,fieldset:disabled a.btn{
 
 .cart-page{
 	margin: 80px auto;
-	background-color: #4d4d4d;
+	background-color: #ffffff;
 	padding: 10px;
+	border-radius: 10px;
 	margin-top: 170px;
 }
 table{

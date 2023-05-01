@@ -40,6 +40,7 @@ $profit = $grand_total - $tcapital;
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- addtocart -->
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600;1,700&family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
   <style>
     .data {
@@ -64,29 +65,46 @@ $profit = $grand_total - $tcapital;
         <?php }
         unset($_SESSION['response']); ?>
 
-        <h2 class="text-center p-2">COMPLETE YOUR ORDER!<?= $d_to; ?></h2>
-        <div class="jumbotron p-3 mb-2 text-center">
-          <h6 class="" style="color: black; text-align:center"><strong>Products :</strong> <?= $allItems; ?></h6>
-          <!-- <h6 class="lead"><strong>Delivery Charge : </strong>Free</h6> -->
-          <h6 style="color: black; text-align:center"><strong>Total Amount : </strong> Php: <?= number_format($grand_total, 2) ?></h6>
-        </div>
-        <br>
+          <h2 style="color:#000">ORDER SUMMARY</h2>
+          <span>Order Date: <?= $d_to; ?></span>
+          <div class="items-table">
+            <p>Booked Tools</p>
+            <div>
+              <p style="color:#000"><?= $allItems; ?></p>
+            </div>
+            <span></span>
+            </table>
+          </div>
+          <div class="items-table">
+            <p> <span>Total Amount:</span> £ <?= number_format($grand_total, 2) ?></p>
+          </div>
+
         <form action="action.php" method="post" enctype="multipart/form-data">
-          <input type="text" name="d_from" value="<?= $d_from; ?>">
-          <input type="text" name="d_to" value="<?= $d_to; ?>">
+          <div style="display:flex; flex-direction: column;margin-top: 20px">
+            <span>Tools Hired (Date from - Date To)</span>
+            <div style="display:flex; justify-content:start; gap: 10px">
+              <input type="text" name="d_from" value="<?= $d_from; ?>">
+              <input type="text" name="d_to" value="<?= $d_to; ?>">
+            </div>
+          </div>
+        
           <input type="hidden" name="products" value="<?= $allItems; ?>">
           <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
           <input type="hidden" name="tcapital" value="<?= $tcapital; ?>">
           <input type="hidden" name="profit" value="<?= $profit; ?>">
           <div class="form-group">
+          <br>
+          <span style="color:#c6c6c6">Client Name</span>
             <input type="text" name="name" class="form-control" value="<?php echo $_SESSION['name'] ?>" required>
             <!-- </div>
           <div class="form-group">
             <input type="email" name="email" class="form-control" value="<?php echo $_SESSION['email'] ?>" required>
           </div> -->
+          <span style="color:#c6c6c6">Contact Number</span>
             <div class="form-group">
               <input type="tel" name="phone" class="form-control" value="<?php echo $_SESSION['phone'] ?>" required>
             </div>
+            <span style="color:#c6c6c6">Note:</span>
             <div class="form-group">
               <input type="text" name="address" class="form-control" value="<?php echo $_SESSION['address'] ?>" required>
             </div>
@@ -105,9 +123,10 @@ $profit = $grand_total - $tcapital;
             </div> -->
 
               <div class="form-group menu">
+              <span style="color:#c6c6c6">Mode of Payment</span> <br>
                 <select id="pmode" name="pmode" class="form-control" required>
                   <option value="" selected disabled>-Select Mode Payment-</option>
-                  <option value="GCash">GCash</option>
+                  <!-- <option value="GCash">GCash</option> -->
                   <option value="COD">Cash On Delivery</option>
                 </select>
               </div>
@@ -135,7 +154,7 @@ $profit = $grand_total - $tcapital;
             <input type="hidden" name="user_id" class="form-control" value="<?php echo $_SESSION['ID']; ?>">
             <?php if (!empty($_SESSION['ID'])) { ?>
               <div class="form-group">
-                <input style="background-color: green; color: #fff;" type="submit" name="placeorder" value="Place Order" class="btn btn-block">
+                <input style="background-color: green; color: #fff;padding: 5px;border-radius: 5px" type="submit" name="placeorder" value="Place Order">
               </div>
             <?php } ?>
             <br>
@@ -209,8 +228,31 @@ $profit = $grand_total - $tcapital;
         $("#" + $(this).val()).fadeIn(700);
       }).change();
     });
+    
   </script>
 
 </body>
 
 </html>
+<style>
+  	* {
+      font-family: 'Josefin Sans', sans-serif !important;
+      color: #000;
+    }
+    
+    .items-table > p {
+      color:#5bb343;
+      font-size: 1.2em;
+    }
+    .items-table > div {
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #c6c6c6;
+    }
+
+    .items-table > div > p {
+      font-weight: bold;
+    }
+
+</style>

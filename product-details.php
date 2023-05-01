@@ -325,6 +325,14 @@ error_reporting(0);
 						$("#message").html(response);
 						window.scrollTo(0, 0);
 						load_cart_item_number();
+						$('.modal-append').append(`<div class="modals animate__animated animate__bounceInUp animate__delay-1s">
+						<div class="modal-bodys">
+							<span class="icon-check"></span>
+							<h2>Added to Cart</h2>
+							<span style="color:#c6c6c6">Your Booking has been added to cart</span>
+							<a href="cart.php" class="btn-cart">Go to Cart</a>
+						</div>
+					</div>`);
 					}
 				});
 			});

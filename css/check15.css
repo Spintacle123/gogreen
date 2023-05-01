@@ -2,18 +2,20 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-family: "Josefin Sans", sans-serif !important;
+	color:#000;
 }
 
 body{
-    background-image: url('../images/menu7.jpg');
+	background-color: #f1f1f1;
+    /* background-image: url('../images/menu7.jpg'); */
     background-size: 100% 100%;
 }
 .navbar{
 	display: flex;
 	align-items: center;
 	padding: 10px;
-	background-color: #b33c00;
+	background-color: #ffffff;
 	position: fixed;
 	top: 0; right:0; left:0;
 	border-radius: 0px 0px 50px 50px;
@@ -103,11 +105,11 @@ h6{
 }
 .col-checkout{
 	margin: auto;
-    width: 450px;
-	padding-left: 10px;
-    padding-right: 10px;
-	background-color: #802000;
+    width: 550px;
+	padding: 20px 20px;
+	background-color: #ffffff;
 	border-radius: 1rem;
+	color: #000;
 }
 .jumbotron{
 	color: #fff;
@@ -158,6 +160,11 @@ h2{
 	color: #fff;
 	font-weight: bold;
     text-align: center;
+}
+.icon-check {
+	content: url('../../gogreen/assets/img/check.svg');
+	height: 5em;
+	width: 5em;
 }
 
 .footer{

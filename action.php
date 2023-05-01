@@ -181,6 +181,8 @@ if (isset($_POST['placeorder'])) {
 						<meta charset="UTF-8">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
 						<title>Checkout</title>
+						<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600;1,700&family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
 						<link rel="stylesheet" type="text/css" href="css/check15.css">
 						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
 						<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -191,15 +193,16 @@ if (isset($_POST['placeorder'])) {
 							<div class="container" style="margin-top: 15px">
 								<div class="row justify-content-center">
 									<div class="col-checkout col-lg-6 px-4 pb-4">
-										<div class="text-center" style="border-radius: 2rem">
-											<div class="text-center" style="border-radius: 2rem">
-												<h2 class="" style="color: yellowgreen">Thank You! Your Order Placed Successfully!</h2>
-												<h4 style="color: #fff" class=" text-light rounded p-2">Items Purchased : ' . $products . '</h4>
-												<h4 style="color: #fff">Total Amount Paid : ' . number_format($grand_total, 2) . '</h4>
-												<h4 style="color: #fff">Mode Payment: ' . $pmode . '</h4>
-												<h4 style="color: #fff">Name : ' . $name . '</h4>
-												<h4 style="color: #fff">Phone : ' . $phone . '</h4>
-												<h4 style="color: #fff">Address : ' . $address . '</h4>
+										<div  class="text-center d-flex justify-content-center" style="border-radius: 2rem">
+											<div style="display:flex;flex-direction: column; align-items:center" class="text-center" style="border-radius: 2rem">
+												<p class="icon-check"></p>
+												<h2 class="" style="color:#000">Your Order Placed Successfully!</h2>
+												<h4 style="color: #c6c6c6" class=" text-light rounded p-2">Items Purchased : ' . $products . '</h4>
+												<h4 style="color: #c6c6c6">Total Amount Paid : ' . number_format($grand_total, 2) . '</h4>
+												<h4 style="color: #c6c6c6">Mode Payment: ' . $pmode . '</h4>
+												<h4 style="color: #c6c6c6">Name : ' . $name . '</h4>
+												<h4 style="color: #c6c6c6">Phone : ' . $phone . '</h4>
+												<h4 style="color: #c6c6c6">Address : ' . $address . '</h4>
 												<a href="home.php" class="btn">Back to Home</a>
 											</div>
 										</div>

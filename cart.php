@@ -9,6 +9,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Cart</title>
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,500;1,600;1,700&family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/cart11.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- addtocart -->
@@ -26,7 +27,7 @@
 				<tr>
 					<th>Product</th>
 					<th>Name</th>
-					<th><a href="action.php?clear=all" class="w3-badge w3-red" onclick="return confirm('Are you sure want to clear your cart?');">Action</a></th>
+					<th>Action</th>
 					<th>Quantity</th>
 					<th>Total Price</th>
 				</tr>
@@ -83,7 +84,8 @@
 						<td>100.00</td>
 					</tr> -->
 					<tr>
-						<td><a href="checkout.php" class="btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>">Proceed to Checkout &#8594;</a></td>
+						<td><a href="action.php?clear=all" class="btns-clear" onclick="return confirm('Are you sure want to clear your cart?');">Clear Cart</a></td>
+						<td><a href="checkout.php" class="btns-checkout <?= ($grand_total > 1) ? '' : 'disabled'; ?>">Proceed to Checkout &#8594;</a></td>
 					</tr>
 				<?php } ?>
 			</table>
@@ -157,3 +159,24 @@
 </script>
 </body>
 </html>
+
+<style>
+		* {
+		font-family: 'Josefin Sans', sans-serif !important;
+		color: #000;
+	}
+
+	.btns-checkout {
+		padding: 10px 20px;
+		background-color: #5bb343;
+		border-radius: 5px;
+		font-size: 15px;
+	}
+
+	.btns-clear {
+		padding: 10px 20px;
+		background-color: #ff0000;
+		border-radius: 5px;
+		font-size: 15px;
+	}
+</style>

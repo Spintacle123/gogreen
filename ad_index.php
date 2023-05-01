@@ -127,11 +127,11 @@
       <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-4">
+        <div class="col-lg-12">
           <div class="row">
 
             <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-12">
+            <div class="col-xxl-4 col-md-12 col-lg-12">
               <div class="card info-card sales-card">
 
                 <div class="filter">
@@ -249,7 +249,7 @@
         </div>
         <!-- End Left side columns -->
 
-        <div class="col-lg-8">
+        <div class="col-lg-6">
           <div class="row">
 
             <!-- Recent Orders -->
