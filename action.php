@@ -42,6 +42,7 @@ if (isset($_GET['product-details'])) {
 if (isset($_POST['cid'])) {
 
 	$cid = $_POST['cid'];
+	$cqty = $_POST['cqty'];
 	$cuser_id = $_POST['cuser_id'];
 	$cimage1 = $_POST['cimage1'];
 	$cname = $_POST['cname'];
@@ -143,6 +144,8 @@ if (isset($_POST['placeorder'])) {
 	$address = $_POST['address'];
 	$pmode = $_POST['pmode'];
 	$user_id = $_POST['user_id'];
+	$d_from = $_POST['d_from'];
+	$d_to = $_POST['d_to'];
 
 	if ($pmode == "GCash") {
 		$image = $_FILES['images']['name'];
@@ -163,9 +166,9 @@ if (isset($_POST['placeorder'])) {
 
 	$data = '';
 
-	$query = "INSERT INTO orders (name,phone,address,pmode,products,amount_paid,tcapital,tprofit,image,user_id) VALUES (?,?,?,?,?,?,?,?,?,?)";
+	$query = "INSERT INTO orders (name,phone,address,pmode,products,amount_paid,tcapital,tprofit,image,d_from,d_to,user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 	$item = $conn->prepare($query);
-	$item->bind_param('sssssssssi', $name, $phone, $address, $pmode, $products, $grand_total, $tcapital, $profit, $upload, $user_id);
+	$item->bind_param('sssssssssssi', $name, $phone, $address, $pmode, $products, $grand_total, $tcapital, $profit, $upload, $d_from, $d_to, $user_id);
 
 	$item->execute();
 	move_uploaded_file($_FILES['images']['tmp_name'], $upload);
