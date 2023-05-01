@@ -378,6 +378,7 @@
                         $month[] = $data['mname'];
                         $amount[] = $data['total'];
                       }
+                      
                     }
                   ?>
 

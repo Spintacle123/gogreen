@@ -44,7 +44,9 @@ error_reporting(0);
 			</div>
 			<div class="p-details">
 				<h2><?= $dname; ?></h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+
+				</p>
 
 				<div class="ratings" style="border-bottom: 1px solid #c6c6c6;margin-bottom:2em">
 					<span>Rating</span>
@@ -66,16 +68,16 @@ error_reporting(0);
 
 				<span class="want-to mb-2 mt-2">Want to Rent?</span>
 				<form class="form-submit">
-						<?php if (!empty($_SESSION['ID'])) { ?>
-							<input type="hidden" class="cuser_id" value="<?php echo $_SESSION['ID'];?>">
-						<?php } ?>
-						<input type="hidden" class="cqty" value="1">
-						<input type="hidden" class="cid" value="<?= $did ?>">
-						<input type="hidden" class="cimage1" value="<?= $dimage; ?>">
-						<input type="hidden" class="cname" value="<?= $dname; ?>">
-						<input type="hidden" class="cprice" value="<?= $dprice; ?>">
-						<input type="hidden" class="ccapital" value="<?= $dcapital; ?>">
-						<input type="hidden" class="ccode" value="<?= $dcode; ?>">
+					<?php if (!empty($_SESSION['ID'])) { ?>
+						<input type="hidden" class="cuser_id" value="<?php echo $_SESSION['ID']; ?>">
+					<?php } ?>
+					<input type="hidden" class="cqty" value="1">
+					<input type="hidden" class="cid" value="<?= $did ?>">
+					<input type="hidden" class="cimage1" value="<?= $dimage; ?>">
+					<input type="hidden" class="cname" value="<?= $dname; ?>">
+					<input type="hidden" class="cprice" value="<?= $dprice; ?>">
+					<input type="hidden" class="ccapital" value="<?= $dcapital; ?>">
+					<input type="hidden" class="ccode" value="<?= $dcode; ?>">
 
 					<div class="d-flex gap-lg-3 mb-4" style="gap:30px">
 						<div class="d-flex flex-column" style="width:calc(100% / 6)">
@@ -93,12 +95,12 @@ error_reporting(0);
 						</div>
 					</div>
 					<?php if (empty($_SESSION['ID'])) { ?>
-						<a href="login.php" class="btn addItemBtn"><span id="total"></span> 
+						<a href="login.php" class="btn addItemBtn"><span id="total"></span>
 							<span class="totals"></span>
-							Book Tools 
+							Book Tools
 						</a>
-					<?php }else{ ?>
-						<button class="btn addItemBtn" style="padding-top: 10px; padding-bottom: 10px" >
+					<?php } else { ?>
+						<button class="btn addItemBtn" style="padding-top: 10px; padding-bottom: 10px">
 							<span class="totals"></span>
 							Book Tools
 						</button>
@@ -287,46 +289,46 @@ error_reporting(0);
 	<script type="text/javascript">
 		$(document).ready(function() {
 
-    // Send product details in the server
-    $(".addItemBtn").click(function(e) {
-      e.preventDefault();
-      var $form = $(this).closest(".form-submit");
-      var cid = $form.find(".cid").val();
-	  var cuser_id = $form.find(".cuser_id").val();
-      var cimage1 = $form.find(".cimage1").val();
-      var cname = $form.find(".cname").val();
-      var cprice = $form.find(".cprice").val();
-      var ccapital = $form.find(".ccapital").val();
-      var ccode = $form.find(".ccode").val();
-      var cqty = $form.find(".cqty").val();
-		var cno_days = $form.find(".cno_days").val();
-		var cd_from = $form.find(".cd_from").val();
-		var cd_to = $form.find(".cd_to").val();
+			// Send product details in the server
+			$(".addItemBtn").click(function(e) {
+				e.preventDefault();
+				var $form = $(this).closest(".form-submit");
+				var cid = $form.find(".cid").val();
+				var cuser_id = $form.find(".cuser_id").val();
+				var cimage1 = $form.find(".cimage1").val();
+				var cname = $form.find(".cname").val();
+				var cprice = $form.find(".cprice").val();
+				var ccapital = $form.find(".ccapital").val();
+				var ccode = $form.find(".ccode").val();
+				var cqty = $form.find(".cqty").val();
+				var cno_days = $form.find(".cno_days").val();
+				var cd_from = $form.find(".cd_from").val();
+				var cd_to = $form.find(".cd_to").val();
 
-      $.ajax({
-        url: 'action.php',
-        method: 'post',
-        data: {
-          cid: cid,
-		  cuser_id: cuser_id,
-          cimage1: cimage1,
-          cname: cname,
-          cprice: cprice,
-          ccapital: ccapital,
-          ccode: ccode,
-          cqty: cqty,
-			cno_days: cno_days,
-			cd_from: cd_from,
-			cd_to: cd_to,
+				$.ajax({
+					url: 'action.php',
+					method: 'post',
+					data: {
+						cid: cid,
+						cuser_id: cuser_id,
+						cimage1: cimage1,
+						cname: cname,
+						cprice: cprice,
+						ccapital: ccapital,
+						ccode: ccode,
+						cqty: cqty,
+						cno_days: cno_days,
+						cd_from: cd_from,
+						cd_to: cd_to,
 
-        },
-        success: function(response) {
-          $("#message").html(response);
-          window.scrollTo(0, 0);
-          load_cart_item_number();
-        }
-      });
-    });
+					},
+					success: function(response) {
+						$("#message").html(response);
+						window.scrollTo(0, 0);
+						load_cart_item_number();
+					}
+				});
+			});
 
 			// Load total no.of items added in the cart and display in the navbar
 			load_cart_item_number();
@@ -362,12 +364,25 @@ error_reporting(0);
 		var picker = flatpickr(datepicker, {
 			dateFormat: 'Y-m-d',
 			locale: 'en',
-			disable: [
-				{
-					from: '2023-05-1',
-					to: '2023-05-3'
-				}
-			],
+			disable: [<?php
+						include 'config.php';
+						$item = $conn->prepare('SELECT * FROM orders');
+						$item->execute();
+						$result = $item->get_result();
+						while ($row = $result->fetch_assoc()) {
+							$str = $row['products'];
+
+							$newStr = explode("<br>", $str);
+
+							for ($i = 0; $i < count($newStr); $i++) {
+								$name = explode(" (", $newStr[$i]);
+								if ($name[$i] == $dname) {
+									$date = array("from" => $row['d_from'], "to" => $row['d_to']);
+									echo json_encode($date) . ',';
+								}
+							}
+						}
+						?>],
 			onChange: function(selectedDates, dateStr, instance) {
 				const noOfDays = $('#noOfDays').val();
 				const price = $('#price').text();
@@ -375,9 +390,9 @@ error_reporting(0);
 
 				dateto.setAttribute('value', analyzeDate(noOfDays, dateFrom));
 
-				$('#dateTo').text(analyzeDate(noOfDays, dateFrom ));
-				$('#totals').text(computeTotal(noOfDays, price ));
-				
+				$('#dateTo').text(analyzeDate(noOfDays, dateFrom));
+				$('#totals').text(computeTotal(noOfDays, price));
+
 				console.log(selectedDates[0]); // logs the selected date object
 				console.log(dateStr); // logs the selected date string in the format 'YYYY-MM-DD'
 			}
