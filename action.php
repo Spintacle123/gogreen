@@ -41,57 +41,46 @@ if (isset($_GET['product-details'])) {
 // Add products into the cart table
 if (isset($_POST['cid'])) {
 
-	$cqty = $_POST['cqty'];
+	$cid = $_POST['cid'];
+	$cuser_id = $_POST['cuser_id'];
+	$cimage1 = $_POST['cimage1'];
+	$cname = $_POST['cname'];
+	$cprice = $_POST['cprice'];
+	$ccapital = $_POST['ccapital'];
+	$ccode = $_POST['ccode'];
+	$cno_days = $_POST['cno_days'];
+	$cd_from = $_POST['cd_from'];
+	$cd_to = $_POST['cd_to'];
+	$total = $cprice * $cqty;
+	$totalc = $ccapital * $cqty;
 
-	if ($cqty <= 0) {
+	$item = $conn->prepare('SELECT code FROM cart WHERE code=?');
+	$item->bind_param('s', $ccode);
+	$item->execute();
+	$res = $item->get_result();
+	$r = $res->fetch_assoc();
+	$acode = $r['code'] ?? '';
+	if (!$acode) {
+		$query = $conn->prepare('INSERT INTO cart (image,name,price,capital,quantity,total,totalc,code,no_days,d_from,d_to,user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
+		$query->bind_param('sssssssssssi', $cimage1, $cname, $cprice, $ccapital, $cqty, $total, $totalc, $ccode, $cno_days, $cd_from, $cd_to, $cuser_id);
+		$query->execute();
+
+		// $new_qty = $qty - $cqty;
+		// $sql_update_qty = "UPDATE products SET qty=".$new_qty." WHERE ID =".$_GET['product_id'];
+		// $qry_update_qty = mysqli_query($conn, $sql_update_qty);
+
 		echo '<div class="alert alert-success alert-dismissible mt-2">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<strong>You cannot order when quantity is 0!</strong>
-				</div>';
-	} else if ($cqty >= 21) {
-		echo '<div class="alert alert-success alert-dismissible mt-2">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<strong>Your order is a lot, minimum of 20 pcs only!</strong>
-				</div>';
-	} else {
-		$cid = $_POST['cid'];
-		$cuser_id = $_POST['cuser_id'];
-		$cimage1 = $_POST['cimage1'];
-		$cname = $_POST['cname'];
-		$cprice = $_POST['cprice'];
-		$ccapital = $_POST['ccapital'];
-		$ccode = $_POST['ccode'];
-		$total = $cprice * $cqty;
-		$totalc = $ccapital * $cqty;
-
-		$item = $conn->prepare('SELECT code FROM cart WHERE code=?');
-		$item->bind_param('s', $ccode);
-		$item->execute();
-		$res = $item->get_result();
-		$r = $res->fetch_assoc();
-		$acode = $r['code'] ?? '';
-
-		if (!$acode) {
-			$query = $conn->prepare('INSERT INTO cart (image,name,price,capital,quantity,total,totalc,code,user_id) VALUES (?,?,?,?,?,?,?,?,?)');
-			$query->bind_param('ssssssssi', $cimage1, $cname, $cprice, $ccapital, $cqty, $total, $totalc, $ccode, $cuser_id);
-			$query->execute();
-
-			// $new_qty = $qty - $cqty;
-			// $sql_update_qty = "UPDATE products SET qty=".$new_qty." WHERE ID =".$_GET['product_id'];
-			// $qry_update_qty = mysqli_query($conn, $sql_update_qty);
-
-			echo '<div class="alert alert-success alert-dismissible mt-2">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
 						<strong>Item added to your cart!</strong>
 					</div>';
-		} else {
-			echo '<div class="alert alert-danger alert-dismissible mt-2">
+	} else {
+		echo '<div class="alert alert-danger alert-dismissible mt-2">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
 						<strong>Item already added to your cart!</strong>
 					</div>';
-		}
 	}
 }
+
 
 
 

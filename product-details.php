@@ -65,31 +65,45 @@ error_reporting(0);
 
 
 				<span class="want-to mb-2 mt-2">Want to Rent?</span>
-				<div class="d-flex gap-lg-3 mb-4" style="gap:30px">
-					<div class="d-flex flex-column" style="width:calc(100% / 6)">
-						<span class="days">No. of days</span>
-						<input type="number" id="noOfDays">
+				<form class="form-submit">
+						<?php if (!empty($_SESSION['ID'])) { ?>
+							<input type="hidden" class="cuser_id" value="<?php echo $_SESSION['ID'];?>">
+						<?php } ?>
+						<input type="hidden" class="cqty" value="1">
+						<input type="hidden" class="cid" value="<?= $did ?>">
+						<input type="hidden" class="cimage1" value="<?= $dimage; ?>">
+						<input type="hidden" class="cname" value="<?= $dname; ?>">
+						<input type="hidden" class="cprice" value="<?= $dprice; ?>">
+						<input type="hidden" class="ccapital" value="<?= $dcapital; ?>">
+						<input type="hidden" class="ccode" value="<?= $dcode; ?>">
+
+					<div class="d-flex gap-lg-3 mb-4" style="gap:30px">
+						<div class="d-flex flex-column" style="width:calc(100% / 6)">
+							<span class="days">No. of days</span>
+							<input type="number" id="noOfDays" class="cno_days">
+						</div>
+						<div class="d-flex flex-column">
+							<span class="days">Starting Date</span>
+							<input type="text" id="datepicker" class="cd_from" data-datepicker>
+						</div>
+						<div class="d-flex flex-column">
+							<span class="days">Date End</span>
+							<p style="color: #b0aeae" id="dateTo">yyyy/mm/dd</p>
+							<input type="hidden" id="date_to" class="cd_to">
+						</div>
 					</div>
-					<div class="d-flex flex-column">
-						<span class="days">Starting Date</span>
-						<input type="text" id="datepicker" data-datepicker>
-					</div>
-					<div class="d-flex flex-column">
-						<span class="days">Date End</span>
-						<p style="color: #b0aeae" id="dateTo">yyyy/mm/dd</p>
-					</div>
-				</div>
-				<?php if (empty($_SESSION['ID'])) { ?>
-					<a href="login.php" class="btn addItemBtn"><span id="total"></span>
-						<span class="totals"></span>
-						Book Tools
-					</a>
-				<?php } else { ?>
-					<button class="btn addItemBtn" style="padding-top: 10px; padding-bottom: 10px">
-						<span class="totals"></span>
-						Book Tools
-					</button>
-				<?php } ?>
+					<?php if (empty($_SESSION['ID'])) { ?>
+						<a href="login.php" class="btn addItemBtn"><span id="total"></span> 
+							<span class="totals"></span>
+							Book Tools 
+						</a>
+					<?php }else{ ?>
+						<button class="btn addItemBtn" style="padding-top: 10px; padding-bottom: 10px" >
+							<span class="totals"></span>
+							Book Tools
+						</button>
+					<?php } ?>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -273,39 +287,46 @@ error_reporting(0);
 	<script type="text/javascript">
 		$(document).ready(function() {
 
-			// Send product details in the server
-			$(".addItemBtn").click(function(e) {
-				e.preventDefault();
-				var $form = $(this).closest(".form-submit");
-				var cid = $form.find(".cid").val();
-				var cuser_id = $form.find(".cuser_id").val();
-				var cimage1 = $form.find(".cimage1").val();
-				var cname = $form.find(".cname").val();
-				var cprice = $form.find(".cprice").val();
-				var ccapital = $form.find(".ccapital").val();
-				var ccode = $form.find(".ccode").val();
-				var cqty = $form.find(".cqty").val();
+    // Send product details in the server
+    $(".addItemBtn").click(function(e) {
+      e.preventDefault();
+      var $form = $(this).closest(".form-submit");
+      var cid = $form.find(".cid").val();
+	  var cuser_id = $form.find(".cuser_id").val();
+      var cimage1 = $form.find(".cimage1").val();
+      var cname = $form.find(".cname").val();
+      var cprice = $form.find(".cprice").val();
+      var ccapital = $form.find(".ccapital").val();
+      var ccode = $form.find(".ccode").val();
+      var cqty = $form.find(".cqty").val();
+		var cno_days = $form.find(".cno_days").val();
+		var cd_from = $form.find(".cd_from").val();
+		var cd_to = $form.find(".cd_to").val();
 
-				$.ajax({
-					url: 'action.php',
-					method: 'post',
-					data: {
-						cid: cid,
-						cuser_id: cuser_id,
-						cimage1: cimage1,
-						cname: cname,
-						cprice: cprice,
-						ccapital: ccapital,
-						ccode: ccode,
-						cqty: cqty,
-					},
-					success: function(response) {
-						$("#message").html(response);
-						window.scrollTo(0, 0);
-						load_cart_item_number();
-					}
-				});
-			});
+      $.ajax({
+        url: 'action.php',
+        method: 'post',
+        data: {
+          cid: cid,
+		  cuser_id: cuser_id,
+          cimage1: cimage1,
+          cname: cname,
+          cprice: cprice,
+          ccapital: ccapital,
+          ccode: ccode,
+          cqty: cqty,
+			cno_days: cno_days,
+			cd_from: cd_from,
+			cd_to: cd_to,
+
+        },
+        success: function(response) {
+          $("#message").html(response);
+          window.scrollTo(0, 0);
+          load_cart_item_number();
+        }
+      });
+    });
 
 			// Load total no.of items added in the cart and display in the navbar
 			load_cart_item_number();
@@ -337,21 +358,26 @@ error_reporting(0);
 
 
 		var datepicker = document.getElementById('datepicker');
+		var dateto = document.getElementById("date_to");
 		var picker = flatpickr(datepicker, {
 			dateFormat: 'Y-m-d',
 			locale: 'en',
-			disable: [{
-				from: '2023-04-10',
-				to: '2023-04-12'
-			}],
+			disable: [
+				{
+					from: '2023-05-1',
+					to: '2023-05-3'
+				}
+			],
 			onChange: function(selectedDates, dateStr, instance) {
 				const noOfDays = $('#noOfDays').val();
 				const price = $('#price').text();
 				const dateFrom = dateStr;
 
-				$('#dateTo').text(analyzeDate(noOfDays, dateFrom));
-				$('#totals').text(computeTotal(noOfDays, price));
+				dateto.setAttribute('value', analyzeDate(noOfDays, dateFrom));
 
+				$('#dateTo').text(analyzeDate(noOfDays, dateFrom ));
+				$('#totals').text(computeTotal(noOfDays, price ));
+				
 				console.log(selectedDates[0]); // logs the selected date object
 				console.log(dateStr); // logs the selected date string in the format 'YYYY-MM-DD'
 			}
