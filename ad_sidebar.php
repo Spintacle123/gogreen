@@ -80,7 +80,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed" href="ad_addproducts.php">
             <i class="bx bx-coffee-togo"></i>
-            <span>Products</span>
+            <span>Tools</span>
           </a>
         </li>
 

@@ -29,11 +29,10 @@
 </head>
 <body>
 	
-
 	<div class="header">
 		<?php include("header.php") ?>
 	</div>
-
+	
 
 	<div class="container">
 		<div class="product-details">
@@ -102,8 +101,7 @@
 		</div>	
 	</div>
 
-
-
+	<div class="modal-append"></div>
 
 	<br>
 	<br>
@@ -313,6 +311,14 @@
           $("#message").html(response);
           window.scrollTo(0, 0);
           load_cart_item_number();
+			$('.modal-append').append(`<div class="modals animate__animated animate__bounceInUp animate__delay-1s">
+		<div class="modal-bodys">
+			<span class="icon-check"></span>
+			<h2>Added to Cart</h2>
+			<span style="color:#c6c6c6">Your Booking has been added to cart</span>
+			<a href="cart.php" class="btn-cart">Go to Cart</a>
+		</div>
+	</div>`);
         }
       });
     });
@@ -685,5 +691,44 @@ $('#review_content').html(html);
 	margin-top: 20px;
 }
 
+.modals {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100vw;
+	background-color: #00000040;
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modals > .modal-bodys {
+	background-color: #ffffff;
+	padding: 10px;
+	width: 30%;
+	border-radius: 10px;
+	display: flex;
+	padding: 20px 10px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon-check {
+	content: url('./assets/img/check.svg');
+	height: 7rem;
+	width: 7rem;
+}
+
+.btn-cart {
+	background-color: #5bb343;
+	padding: 10px 30px;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	margin-top: 3rem;
+}
 
 </style>
