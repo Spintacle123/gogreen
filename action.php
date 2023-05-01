@@ -42,19 +42,19 @@
 
 		$cqty = $_POST['cqty'];
 
-		if($cqty <= 0){
-			echo '<div class="alert alert-success alert-dismissible mt-2">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<strong>You cannot order when quantity is 0!</strong>
-				</div>';
-		}
-		else if($cqty >= 21){
-			echo '<div class="alert alert-success alert-dismissible mt-2">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					<strong>Your order is a lot, minimum of 20 pcs only!</strong>
-				</div>';
-		}
-		else{
+		// if($cqty <= 0){
+		// 	echo '<div class="alert alert-success alert-dismissible mt-2">
+		// 			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		// 			<strong>You cannot order when quantity is 0!</strong>
+		// 		</div>';
+		// }
+		// else if($cqty >= 21){
+		// 	echo '<div class="alert alert-success alert-dismissible mt-2">
+		// 			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		// 			<strong>Your order is a lot, minimum of 20 pcs only!</strong>
+		// 		</div>';
+		// }
+		// else{
 			$cid = $_POST['cid'];
 			$cuser_id = $_POST['cuser_id'];
 			$cimage1 = $_POST['cimage1'];
@@ -62,6 +62,9 @@
 			$cprice = $_POST['cprice'];
 			$ccapital = $_POST['ccapital'];
 			$ccode = $_POST['ccode'];
+			$cno_days = $_POST['cno_days'];
+			$cd_from = $_POST['cd_from'];
+			$cd_to = $_POST['cd_to'];
 			$total = $cprice * $cqty;
 			$totalc = $ccapital * $cqty;
 
@@ -73,8 +76,8 @@
 			$acode = $r['code'] ?? '';
 
 			if (!$acode) {
-				$query = $conn->prepare('INSERT INTO cart (image,name,price,capital,quantity,total,totalc,code,user_id) VALUES (?,?,?,?,?,?,?,?,?)');
-				$query->bind_param('ssssssssi',$cimage1,$cname,$cprice,$ccapital,$cqty,$total,$totalc,$ccode,$cuser_id);
+				$query = $conn->prepare('INSERT INTO cart (image,name,price,capital,quantity,total,totalc,code,no_days,d_from,d_to,user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
+				$query->bind_param('sssssssssssi',$cimage1,$cname,$cprice,$ccapital,$cqty,$total,$totalc,$ccode,$cno_days,$cd_from,$cd_to,$cuser_id);
 				$query->execute();
 
 				// $new_qty = $qty - $cqty;
@@ -92,7 +95,7 @@
 						<strong>Item already added to your cart!</strong>
 					</div>';
 			}
-		}
+		// }
 	}
 
 
