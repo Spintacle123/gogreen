@@ -369,7 +369,7 @@
 	}
 
 	.ads-1 {
-		content: url('./assets/img/ad.jpg');
+		content: url('./images/ad.jpg');
 		width: 100%;
 		border-radius: 10px;
 	}

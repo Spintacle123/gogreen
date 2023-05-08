@@ -95,7 +95,7 @@ error_reporting(0);
 						</div>
 					</div>
 					<?php if (empty($_SESSION['ID'])) { ?>
-						<a href="login.php" class="btn addItemBtn"><span id="total"></span>
+						<a href="login.php" class="btn addItemBtns"><span id="total"></span>
 							<span class="totals"></span>
 							Book Tools
 						</a>
